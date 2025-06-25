@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092  # Internal Docker name
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
