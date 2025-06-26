@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:21-jdk
 WORKDIR /app
-COPY target/uploader-service.jar app.jar
+COPY target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
