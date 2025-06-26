@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class UploadController {
 
     private final KafkaProducerService producer;
-    private static final String STORAGE_DIR = "C:/video-storage/raw/";
+    private static final String STORAGE_DIR = "/video-storage/raw/";
 
     @PostMapping("/upload")
     public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file,
