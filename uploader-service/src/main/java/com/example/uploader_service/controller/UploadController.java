@@ -1,22 +1,26 @@
 package com.example.uploader_service.controller;
 
-import com.example.uploader_service.model.VideoUploadedEvent;
-import com.example.uploader_service.service.KafkaProducerService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.example.uploader_service.model.VideoUploadedEvent;
+import com.example.uploader_service.service.KafkaProducerService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
 public class UploadController {
 
     private final KafkaProducerService producer;
-    private static final String STORAGE_DIR = "/videos/raw/";
+    private static final String STORAGE_DIR = "C:/video-storage/raw/";
 
     @PostMapping("/upload")
     public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file,
