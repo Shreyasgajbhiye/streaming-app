@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   zookeeper:
@@ -27,6 +26,14 @@ services:
     container_name: uploader-service
     ports:
       - "8081:8081"
+    depends_on:
+      - kafka
+    volumes:
+      - ./video-data:/video-storage
+
+  video-processing-service:
+    build: ./video-processing-service
+    container_name: video-processing-service
     depends_on:
       - kafka
     volumes:
